@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+<h5>@Model</h5>
+
+@section scripts{
+    @ViewBag.Title
+    <button id="btnRefreshPartial">点击</button>
+}
+
+@HelperAssistant.GetYesterday()
+
+@FunctionsAssistant.ShowText("ASP.NET MVC 5")
+
+<div id="contactInfo">
+    @{Html.RenderAction("ContactPartial");}
+</div>
+
+<script type="text/javascript">
+    function LoadPage() {
+        $('#contactInfo').load('ContactPartial', {
+        }, function () {
+            alert("Load partial view has being finished.");
+        });
+    }
+
+    $('#btnRefreshPartial').click(function () {
+        LoadPage();
+    });
+</script>

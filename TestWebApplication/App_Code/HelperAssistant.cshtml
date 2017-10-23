@@ -1,0 +1,9 @@
+﻿@helper ShowMessage(string msg)
+{
+    @msg
+}
+
+@helper GetYesterday()
+{
+    @DateTime.Now.AddDays(-1)
+}
